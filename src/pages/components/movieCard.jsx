@@ -9,7 +9,7 @@ const MovieCard = ({ movie: { imdbID, Year, Poster, Title, Type } }) => {
         <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
           <p className="text-tiny uppercase font-bold">{Type}</p>
           <small className="text-default-500">{Year}</small>
-          <h4 className="font-bold text-large text-left">{Title}</h4>
+          <h4 className="font-bold text-medium text-left">{Title}</h4>
         </CardHeader>
         <CardBody className="overflow-visible py-2">
           <Image

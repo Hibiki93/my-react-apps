@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 import MovieCard from "./components/movieCard";
 import LoadingCard from "./components/loading";
 
-import {Button} from "@nextui-org/react";
 import {Input} from "@nextui-org/react";
 import {SearchIcon} from "./icon/searchIcon";
 
@@ -28,6 +27,7 @@ const App = () =>{
   const [loading, setLoading] = useState(false);
 
   const handleEnter = (event)=>{
+    console.log(event.key)
     if(event.key === 'Enter'){
       searchMovies(searchTerm);
     }
@@ -35,13 +35,13 @@ const App = () =>{
 
   useEffect(()=>{
     searchMovies(searchTerm);
-  },[]);
+  },[searchTerm]);
 
   return (
     <>
         <div className="w-full flex flex-row items-center justify-center">
-         <div className="mx-auto w-full max-w-[1024px] pb-3">
-         <h1 className="mb-3 w-full mb-10 font-bold mt-12">Movies</h1>
+         <div className="mx-auto w-full max-w-[1024px] pb-3 px-6">
+         <h1 className="mb-3 w-full mb-10 font-bold mt-12 text-large">Movies</h1>
           <div className="flex w-full flex-col">
             <div className="mb-3 w-[340px] h-[240px] px-8 rounded-2xl flex justify-center items-center bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
               <Input
@@ -69,7 +69,6 @@ const App = () =>{
                     "!cursor-text",
                   ],
                 }}
-                value={searchTerm} 
                 onKeyDown={handleEnter}
                 onChange={(e)=>setSearchTerm(e.target.value)}
                 placeholder="Type to search movie..."
