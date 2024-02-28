@@ -9,7 +9,7 @@ import {SearchIcon} from "./icon/searchIcon";
 const API_URL = 'http://www.omdbapi.com?apikey=c032e2d7';
 
 const App = () =>{
-
+  console.log('I am working')
   const searchMovies = async(title)=>{
     setMovies();
     setLoading(true);
@@ -17,6 +17,7 @@ const App = () =>{
     const data = await response.json();
     setTimeout(() => {
       // Simulating API call with setTimeout
+      console.log('API working')
       setMovies(data.Search);
       setLoading(false);
     }, 1000); 
@@ -81,8 +82,8 @@ const App = () =>{
 
           <div className="grid grid-cols-4 gap-4">
             {movies?.length > 0 && !loading ? (
-                  movies.map((movie) => (
-                    <MovieCard movie={movie} />
+                  movies.map((movie,index) => (
+                    <MovieCard movie={movie} key={index} />
                     ))
             ) : (
                   loading ? (
